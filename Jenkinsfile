@@ -11,7 +11,12 @@ pipeline {
                 git url: "https://github.com/barkurguru/resoluteai.git", branch: "main"
             }
         }
-        stage("Docker Build") {
+        stage("Maven build...") {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+        stage("Docker Building image..") {
             steps {
                 sh "whoami"
                 sh "docker build -t app  ."
