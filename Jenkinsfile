@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'dev'
-        }
-    }
+    agent  any
 
     stages {
         stage("Code from Repo...") {
