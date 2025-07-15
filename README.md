@@ -9,4 +9,3 @@ a)/employee/place/{place}/salary/{percentage}
 b)/employee/getAllEmpoyees
 
 c)/employee/competency/{competency}/salaryange/{salaryfrom}/{salaryto}
-
