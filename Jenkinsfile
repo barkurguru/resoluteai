@@ -13,7 +13,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                    cmd 'mvn clean package'
+                    cmd 'mvn -X clean package'
                 }
             }
         }
