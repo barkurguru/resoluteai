@@ -13,7 +13,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                    cmd 'mvn -X clean package'
+                    bat 'mvn -X clean package'
                 }
             }
         }
@@ -21,20 +21,28 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    cmd 'docker build -t barkurguru/employeeapp .'
+                    bat 'docker build -t barkurguru/employeeapp .'
                 }
             }
         }
 
 
-        stage('Deploy to EKS') {
+        stage('Deploy ') {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'kubeconfig-credentials', serverUrl: 'https://your-eks-cluster-url']) {
-                        cmd 'kubectl apply -f kubernetes/k8s.yaml'
+                        bat 'kubectl apply -f k8s-deploy.yaml'
                     }
                 }
             }
+
+            stage('Service ') {
+            steps {
+                script {
+                        bat 'kubectl apply -f k8s-service.yaml'
+                    }
+                }
+            }
+        
         }
     }
 }
